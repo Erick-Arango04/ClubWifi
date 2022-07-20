@@ -4,10 +4,12 @@ import java.io.IOException;
 
 import org.apache.http.client.ClientProtocolException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.totalplay.mx.mjtotalplaynetworkconfiguration.dao.SendRequest;
+
 
 @RestController
 public class ControllerNetwork {
@@ -17,9 +19,9 @@ public class ControllerNetwork {
  	
 	
 	@PostMapping("/prueba")
-	public void prueba() throws ClientProtocolException, IOException {
+	public void prueba( @RequestBody NetworkRequest networkResponse) throws ClientProtocolException, IOException {
 	  
-		 request.getResult();
+		 request.getResult(networkResponse);
 		
 	}
 	

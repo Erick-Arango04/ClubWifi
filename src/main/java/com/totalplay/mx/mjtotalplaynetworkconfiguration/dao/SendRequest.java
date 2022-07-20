@@ -15,11 +15,13 @@ import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.stereotype.Component;
 
+import com.totalplay.mx.mjtotalplaynetworkconfiguration.controller.NetworkRequest;
+
 
 @Component
 public class SendRequest {
 
-	public void getResult() throws ClientProtocolException, IOException  {
+	public void getResult(NetworkRequest networkResponse) throws ClientProtocolException, IOException  {
 		
 		 HttpClient client_object = HttpClientBuilder.create().build();
 		 
@@ -31,8 +33,8 @@ public class SendRequest {
 		   "<soapenv:Body>\n"+
 		      "<tem:EnabledClubWifi>\n"+
 		         "<!--Optional:-->\n" +
-		         "<tem:Account>0190018156</tem:Account>\n"+
-		         "<tem:Flag>0</tem:Flag>\n"+
+		         "<tem:Account>"+networkResponse.getAccount()+"</tem:Account>\n"+
+		         "<tem:Flag>"+networkResponse.getFlag()+"</tem:Flag>\n"+
 		      "</tem:EnabledClubWifi>\n" +
 		   "</soapenv:Body>\n" +
 		"</soapenv:Envelope>\n");
