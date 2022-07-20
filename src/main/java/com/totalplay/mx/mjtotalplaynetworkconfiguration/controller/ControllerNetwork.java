@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.totalplay.mx.mjtotalplaynetworkconfiguration.dao.SendRequest;
 
 
+
 @RestController
 public class ControllerNetwork {
 
@@ -19,10 +20,11 @@ public class ControllerNetwork {
  	
 	
 	@PostMapping("/prueba")
-	public void prueba( @RequestBody NetworkRequest networkResponse) throws ClientProtocolException, IOException {
+	public NetworkResponseFull prueba( @RequestBody NetworkRequest networkResponse) throws ClientProtocolException, IOException {
 	  
 		 request.getResult(networkResponse);
 		
+		return new NetworkResponseFull ("0","" + (int)(Math.random()*99999999+1),"Petición realizada con éxito.","");
 	}
 	
 	
